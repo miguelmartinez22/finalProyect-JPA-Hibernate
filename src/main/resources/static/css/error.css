@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Rowdies:wght@300&display=swap');
+
+body {
+    height: 800px;
+    font-family: 'Anton', sans-serif;
+    background-color: rgba(229, 208, 208, 0.6);
+}
+
+main {
+    height: 75%;
+    margin-top: 6%;
+}
+
+#mensaje {
+    border: 1px solid black;
+    text-align: center;
+    margin: auto;
+}

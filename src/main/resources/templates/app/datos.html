@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="../../static/css/carteles.css" th:href="@{/css/carteles.css}">
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f33f57c2f7.js" crossorigin="anonymous"></script>
+
+    <style>
+        body {height: 600px;}
+
+        main {height: 500px;}
+
+        .datos {padding: 0.5em;}
+
+        .datos h2 {
+            text-align: center;
+        }
+    </style>
+
+    <title>Carteles 2022</title>
+</head>
+<body>
+<div class="container-fluid">
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html" th:href="@{/}"><i class="fas fa-home"></i> QUEVEDO FEST 2022</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="entradas.html" th:href="@{/entradas}"><i class="fab fa-phoenix-framework"></i>&nbsp; ENTRADAS</a>
+                        </li>
+                        &nbsp;&nbsp;
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="carteles.html" th:href="@{/carteles}"><i class="fas fa-music"></i> &nbsp;CARTELES 2022</a>
+                        </li>
+                        &nbsp;&nbsp;
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="quienesSomos.html" th:href="@{/quienesSomos}"><i class="fas fa-user-friends"></i> &nbsp;¿QUIÉNES SOMOS?</a>
+                        </li>
+                    </ul>
+                    <h3><a href="app/login.html" th:href="@{/login}"><i class="far fa-user"></i></a></h3>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="row datos">
+            <h2>DATOS PERSONALES</h2>
+            <br>
+            <!-- Dark Table -->
+            <table class="col-10 col-lg-10 col-md-10 col-sm-10 table table-dark">
+                <thead>
+                    <tr>
+                        <th scope="col">DNI</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Primer Apellido</th>
+                        <th scope="col">Segundo Apellido</th>
+                        <th scope="col">Fecha de Nacimiento</th>
+                        <th scope="col">Localidad</th>
+                        <th scope="col">Entrada</th>
+                        <th scope="col">Precio de Entrada</th>
+                        <th scope="col">Tipo de Entrada</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row" th:text="${cliente.dni}">dni</th>
+                        <td th:text="${cliente.usuario}">usuario</td>
+                        <td th:text="${cliente.nombre}">nombre</td>
+                        <td th:text="${cliente.apellido1}">apellido1</td>
+                        <td th:text="${cliente.apellido2}">apellido2</td>
+                        <td th:text="${cliente.fechaNacimiento}">fechaNacimiento</td>
+                        <td th:text="${cliente.localidad}">localidad</td>
+                        <td th:text="${cliente.entrada.id}">entrada</td>
+                        <td th:text="${cliente.precio}">precio</td>
+                        <td th:switch="${cliente.precio}">
+                            <span th:case="'60'">Entrada normal</span>
+                            <span th:case="'80'">Entrada VIP</span>
+                            <span th:case="'150'">Entrada GOLD</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+    <footer class="w-100 py-4 flex-shrink-0 bg-dark">
+        <div class="container py-4">
+            <div class="row gy-4 gx-5">
+                <div class="col-lg-4 col-md-4">
+                    <h5 class="h1 text-white"><i class="fas fa-exclamation-triangle"></i> WARN</h5>
+                    <p class="small text-muted">Prohibido el acceso a menores de 18 años.</p>
+                    <p class="small text-muted mb-0">&copy; Copyrights. All rights reserved. <a class="text-primary" href="#">www.quevedofest.com</a></p>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5 class="h2 text-white mb-3"><i class="fas fa-users"></i> REDES SOCIALES</h5>
+                    <h2>
+                        <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                        &nbsp;&nbsp;
+                        <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                        &nbsp;&nbsp;
+                        <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
+                        &nbsp;&nbsp;
+                        <a href="https://tiktok.com/"><i class="fab fa-tiktok"></i></a>
+                        &nbsp;&nbsp;
+                        <a href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
+                    </h2>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h3 class="text-white"><i class="fas fa-info-circle"></i> CONTÁCTANOS</h3>
+                    <br>
+                    <p class="small text-muted"><i class="fa fa-phone"></i>&nbsp; 91 499 55 88</p>
+                    <p class="small text-muted"><i class="fas fa-envelope"></i>&nbsp; quevedofestival@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+
+<script type="text/javascript" src="../../static/js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</html>

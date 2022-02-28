@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="../../static/css/admin.css" th:href="@{/css/admin.css}">
+
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f33f57c2f7.js" crossorigin="anonymous"></script>
+
+    <!-- Vendor CSS Files -->
+    <link href="../../static/assets/vendor/bootstrap-icons/bootstrap-icons.css" th:href="@{/assets/vendor/bootstrap-icons/bootstrap-icons.css}" rel="stylesheet">
+    <link href="../../static/assets/vendor/boxicons/css/boxicons.min.css" th:href="@{/assets/vendor/boxicons/css/boxicons.min.css}" rel="stylesheet">
+
+    <link href="../../static/assets/css/style.css" th:href="@{/assets/css/style.css}" rel="stylesheet">
+
+    <title>Administrar festival</title>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <!-- ======= Header ======= -->
+        <header id="header" class="header fixed-top d-flex align-items-center bg-light">
+
+            <div class="d-flex align-items-center justify-content-between">
+                <a class="logo d-flex align-items-center">
+                    <span class="d-none d-lg-block "><i class="fas fa-user-cog"></i>&nbsp; CONSOLA DE ADMINISTRADOR</span>
+                </a>
+                <i class="toggle-sidebar-btn">...</i>
+            </div><!-- End Logo -->
+
+            <nav class="header-nav ms-auto">
+                <!--Icono cartera-->
+                <i class="fas fa-wallet"></i>
+                <a th:text="${cartera}" id="cartera"></a>
+                <h6><strong>Dinero Entradas</strong></h6>
+            </nav><!-- End Icons Navigation -->
+
+        </header><!-- End Header -->
+
+        <!-- ======= Sidebar ======= -->
+        <aside id="sidebar" class="sidebar bg-secondary">
+
+            <ul class="sidebar-nav" id="sidebar-nav">
+
+                <li class="nav-item">
+                    <a class="nav-link " href="../index.html" th:href="@{/}">
+                        <i class="fas fa-eye"></i>
+                        <span>&nbsp; Vista cliente</span>
+                    </a>
+                </li><!-- End Dashboard Nav -->
+
+                <br>
+
+                <li class="nav-item">
+                    <a class="nav-link " href="#artista" th:href="@{#artista}">
+                        <i class="fab fa-wpforms"></i>
+                        <span>&nbsp; Añadir artista</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " href="#camerino" th:href="@{#camerino}">
+                        <i class="fab fa-wpforms"></i>
+                        <span>&nbsp; Añadir camerino</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " href="#cartel" th:href="@{#cartel}">
+                        <i class="fab fa-wpforms"></i>
+                        <span>&nbsp; Añadir cartel</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " href="#club" th:href="@{#club}">
+                        <i class="fab fa-wpforms"></i>
+                        <span>&nbsp; Añadir club de fans</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " href="#escenario" th:href="@{#escenario}">
+                        <i class="fab fa-wpforms"></i>
+                        <span>&nbsp; Añadir escenario</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " href="#manager" th:href="@{#manager}">
+                        <i class="fab fa-wpforms"></i>
+                        <span>&nbsp; Añadir mánager</span>
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " href="#patrocinador" th:href="@{#patrocinador}">
+                        <i class="fab fa-wpforms"></i>
+                        <span>&nbsp; Añadir patrocinador</span>
+                    </a>
+                </li>
+
+                <br>
+
+                <li class="nav-item">
+                    <a class="nav-link " href="#listadoCamerino" th:href="@{#listadoCamerino}">
+                        <i class="fas fa-list"></i>
+                        <span>&nbsp; Otras opciones</span>
+                    </a>
+                </li>
+
+            </ul>
+
+        </aside><!-- End Sidebar-->
+
+        <main id="main" class="main">
+
+            <div class="pagetitle">
+                <h1>Administrar festival</h1>
+                <nav>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    </ol>
+                </nav>
+            </div><!-- End Page Title -->
+
+            <br>
+            <a name="artista"></a>
+            <div class="card">
+
+                <div class="card-body pb-0">
+                    <h5 class="card-title">AÑADIR ARTISTA</h5>
+                    <h6><i class="fas fa-exclamation-circle"></i><strong> Nota. </strong>Ten en cuenta que antes de añadir un artista, debes haber creado su
+                        camerino y su manager.</h6>
+
+                    <form method="post" enctype="multipart/form-data" action="#" th:action="@{/newArtista/submit}"
+                        th:object="${artista}">
+
+                        <div class="form-outline mb-4">
+                            <input type="text" id="dni" class="form-control" maxlength="9" required th:field="*{dni}" />
+                            <label class="form-label" for="dni">DNI</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="text" id="nombreArtista" class="form-control" required th:field="*{nombre}" />
+                            <label class="form-label" for="nombreArtista">Nombre</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="number" id="salarioArtista" class="form-control" required
+                                th:field="*{salario}" />
+                            <label class="form-label" for="salarioArtista">Salario</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="text" id="entradaArtista" class="form-control" required
+                                th:field="*{horaEntrada}" />
+                            <label class="form-label" for="entradaArtista">Hora comienzo actuación</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="text" id="salidaArtista" class="form-control" required
+                                th:field="*{horaSalida}" />
+                            <label class="form-label" for="salidaArtista">Hora fin de actuación</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="text" id="generoArtista" class="form-control" required
+                                th:field="*{generoMusical}" />
+                            <label class="form-label" for="generoArtista">Género musical</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="text" id="nacionalidadArtista" class="form-control" required
+                                th:field="*{nacionalidad}" />
+                            <label class="form-label" for="nacionalidadArtista">Nacionalidad del artista</label>
+                        </div>
+
+                        <!--Mandar desde el controlador una lista de camerinos-->
+                        <div class="form-outline mb-4">
+                            <select required name="camerinoArtista" id="camerinoArtista" class="form-control"
+                                th:field="*{camerino}">
+                                <option th:each="camerino : ${camerinos}" th:value="${camerino.id}"
+                                    th:text="${camerino.nombre}"></option>
+                            </select>
+                            <label class="form-label" for="camerinoArtista">ID Camerino</label>
+                        </div>
+
+                        <!--Mandar desde el controlador una lista de managers-->
+                        <div class="form-outline mb-4">
+                            <select required name="managerArtista" id="managerArtista" class="form-control"
+                                th:field="*{manager.dni}">
+                                <option th:each="manage : ${managers}" th:value="${manage.dni}"
+                                    th:text="${manage.nombre}"></option>
+                            </select>
+                            <label class="form-label" for="managerArtista">DNI Manager</label>
+                        </div>
+
+                        <button class="btn btn-outline-light px-3 bg-primary" type="submit">Hecho</button>
+                    </form>
+                </div>
+            </div>
+
+            <a name="camerino"></a>
+            <div class="card">
+
+                <div class="card-body pb-0">
+                    <h5 class="card-title">AÑADIR CAMERINO</h5>
+
+                    <form method="post" enctype="multipart/form-data" action="#" th:action="@{/newCamerino/submit}"
+                        th:object="${camerino}">
+
+                        <div class="form-outline mb-4">
+                            <input type="text" id="fechaHora" class="form-control" required th:field="*{fechaHora}" />
+                            <label class="form-label" for="fechaHora">Fecha y hora</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="text" id="nombreCamerino" class="form-control" required th:field="*{nombre}" />
+                            <label class="form-label" for="nombreCamerino">Nombre</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <select required name="gama" id="gama" class="form-control" th:field="*{gama}">
+                                <option value="Alta">Alta</option>
+                                <option value="Media">Media</option>
+                                <option value="Baja">Baja</option>
+                            </select>
+                            <label class="form-label" for="gama">Gama</label>
+                        </div>
+
+                        <button class="btn btn-outline-light px-3 bg-primary" type="submit">Hecho</button>
+                    </form>
+                </div>
+            </div>
+
+            <a name="cartel"></a>
+            <div class="card">
+
+                <div class="card-body pb-0">
+                    <h5 class="card-title">AÑADIR CARTEL</h5>
+
+                    <form method="post" enctype="multipart/form-data" action="#" th:action="@{/newCartel/submit}"
+                        th:object="${cartel}">
+
+                        <!--AÑADIR FESTIVAL ID DE FORMA AUTOMATICA EN EL CONTROLLER-->
+
+                        <div class="form-outline mb-4">
+                            <input type="text" id="nombreCartel" class="form-control" required th:field="*{nombre}" />
+                            <label class="form-label" for="nombreCartel">Nombre</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="date" id="fechaCartel" class="form-control" required th:field="*{festival.nombre}" />
+                            <label class="form-label" for="fechaCartel">Fecha</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="text" id="generoCartel" class="form-control" required
+                                th:field="*{generoMusical}" />
+                            <label class="form-label" for="generoCartel">Género musical</label>
+                        </div>
+
+                        <button class="btn btn-outline-light px-3 bg-primary" type="submit">Hecho</button>
+
+                    </form>
+                </div>
+            </div>
+
+            <a name="club"></a>
+            <div class="card">
+
+                <div class="card-body pb-0">
+                    <h5 class="card-title">AÑADIR CLUB DE FANS</h5>
+                    <h6><i class="fas fa-exclamation-circle"></i><strong> Nota. </strong>Ten en cuenta que antes de añadir un club de fans, debes haber dado de alta al artista al que le pertenece.</h6>
+
+                    <form method="post" enctype="multipart/form-data" action="#" th:action="@{/newClub/submit}"
+                        th:object="${clubFans}">
+
+                        <div class="form-outline mb-4">
+                            <input type="text" id="nombreClub" class="form-control" required th:field="*{nombre}" />
+                            <label class="form-label" for="nombreClub">Nombre</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="date" id="fechaClub" class="form-control" required
+                                th:field="*{artista.nombre}" />
+                            <label class="form-label" for="fechaClub">Fecha de alta de club</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="number" id="recaudacionClub" class="form-control" required
+                                th:field="*{recaudacion}" />
+                            <label class="form-label" for="recaudacionClub">Recaudación</label>
+                        </div>
+
+                        <!--Mandar desde el controlador una lista de artistas-->
+                        <div class="form-outline mb-4">
+                            <select required name="artistaClub" id="artistaClub" class="form-control"
+                                th:field="*{artista.dni}">
+                                <option th:each="artist : ${artistas}" th:value="${artist.dni}"
+                                    th:text="${artist.nombre}"></option>
+                            </select>
+                            <label class="form-label" for="artistaClub">Artista</label>
+                        </div>
+
+                        <button class="btn btn-outline-light px-3 bg-primary" type="submit">Hecho</button>
+
+                    </form>
+                </div>
+            </div>
+
+            <a name="escenario"></a>
+            <div class="card">
+
+                <div class="card-body pb-0">
+                    <h5 class="card-title">AÑADIR ESCENARIO</h5>
+
+                    <form method="post" enctype="multipart/form-data" action="#" th:action="@{/newEscenario/submit}"
+                        th:object="${escenario}">
+
+                        <div class="form-outline mb-4">
+                            <input type="text" id="nombreEscenario" class="form-control" required th:field="*{nombre}" />
+                            <label class="form-label" for="nombreEscenario">Nombre</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="text" id="horaEscenario" class="form-control" required th:field="*{hora}" />
+                            <label class="form-label" for="horaEscenario">Hora comienzo de las actuaciones</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="number" id="capacidadEscenario" class="form-control" required
+                                th:field="*{capacidad}" />
+                            <label class="form-label" for="capacidadEscenario">Capacidad de espectadores</label>
+                        </div>
+
+                        <button class="btn btn-outline-light px-3 bg-primary" type="submit">Hecho</button>
+
+                    </form>
+                </div>
+            </div>
+
+            <a name="manager"></a>
+            <div class="card">
+
+                <div class="card-body pb-0">
+                    <h5 class="card-title">AÑADIR MÁNAGER</h5>
+
+                    <form method="post" enctype="multipart/form-data" action="#" th:action="@{/newManager/submit}"
+                        th:object="${manager}">
+
+                        <div class="form-outline mb-4">
+                            <input type="text" id="dniManager" class="form-control" required th:field="*{dni}" />
+                            <label class="form-label" for="dniManager">DNI</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="text" id="nombre" class="form-control" required th:field="*{nombre}" />
+                            <label class="form-label" for="nombre">Nombre</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="text" id="telefono" class="form-control" required th:field="*{telefono}" />
+                            <label class="form-label" for="telefono">Teléfono</label>
+                        </div>
+
+                        <button class="btn btn-outline-light px-3 bg-primary" type="submit">Hecho</button>
+
+                    </form>
+                </div>
+            </div>
+
+            <a name="patrocinador"></a>
+            <div class="card">
+
+                <div class="card-body pb-0">
+                    <h5 class="card-title">AÑADIR PATROCINADOR</h5>
+
+                    <form method="post" enctype="multipart/form-data" action="#" th:action="@{/newPatrocinador/submit}"
+                          th:object="${patrocinador}">
+
+                        <div class="form-outline mb-4">
+                            <input type="text" id="nombrePatrocinador" class="form-control" required th:field="*{nombre}" />
+                            <label class="form-label" for="nombrePatrocinador">Nombre</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="text" id="telefonoPatrocinador" class="form-control" required th:field="*{telefono}" />
+                            <label class="form-label" for="telefonoPatrocinador">Teléfono</label>
+                        </div>
+
+                        <div class="form-outline mb-4">
+                            <input type="text" id="recaudacionPatrocinador" class="form-control" required th:field="*{recaudacion}" />
+                            <label class="form-label" for="recaudacionPatrocinador">Recaudacion</label>
+                        </div>
+
+                        <button class="btn btn-outline-light px-3 bg-primary" type="submit">Hecho</button>
+
+                    </form>
+                </div>
+            </div>
+
+            <a name="listadoCamerino"></a>
+            <div class="card">
+
+                <div class="card-body pb-0">
+                    <h5 class="card-title">Listado Camerinos</h5>
+
+                    <table class="table table-dark">
+                        <thead>
+                        <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">Fecha y Hora</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Gama</th>
+                            <th scope="col">Artista</th>
+                            <th scope="col">Aumentar Gama</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="camerin : ${camerinos}">
+                            <th scope="row" th:text="${camerin.id}">id</th>
+                            <td th:text="${camerin.fechaHora}">fecha y hora</td>
+                            <td th:text="${camerin.nombre}">nombre</td>
+                            <td th:text="${camerin.gama}">gama</td>
+                            <td th:text="${camerin.artista.nombre}">artista</td>
+                            <td th:switch="${camerin.gama}">
+                                <span th:case="'Baja'">
+                                    <form action="#" th:action="@{/listadoCamerino/submit}"method="post">
+                                        <input type="hidden" th:value="${camerin.id}" th:name="camerinId"/>
+                                        <button class="btn btn-outline-light px-3 bg-primary" type="submit">Aumentar Gama</button>
+                                    </form>
+                                </span>
+                                <span th:case="'Media'">
+                                    <form action="#" th:action="@{/listadoCamerino/submit}"method="post">
+                                        <input type="hidden" th:value="${camerin.id}" th:name="camerinId"/>
+                                        <button class="btn btn-outline-light px-3 bg-primary" type="submit">Aumentar Gama</button>
+                                    </form>
+                                </span>
+                                <span th:case="'Alta'">Este camerino no puede aumentar su gama</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <a name="listadoArtista"></a>
+            <div class="card">
+
+                <div class="card-body pb-0">
+                    <h5 class="card-title">Listado Artistas</h5>
+                    <h6><i class="fas fa-exclamation-circle"></i><strong> Nota. </strong>Ten en cuenta que en el campo de texto deberás introducir el <strong>porcentaje</strong> a reducir, no la cantidad.</h6>
+
+                    <table class="table table-dark">
+                        <thead>
+                        <tr>
+                            <th scope="col">dni</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Salario</th>
+                            <th scope="col">Hora Entrada</th>
+                            <th scope="col">Hora Salida</th>
+                            <th scope="col">Género Musical</th>
+                            <th scope="col">Nacionalidad</th>
+                            <th scope="col">Reducir Salario</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="artist : ${artistas}">
+                            <th scope="row" th:text="${artist.dni}">DNI</th>
+                            <td th:text="${artist.nombre}">Nombre</td>
+                            <td th:text="${artist.salario}">Salario</td>
+                            <td th:text="${artist.horaEntrada}">Hora entrada</td>
+                            <td th:text="${artist.horaSalida}">Hora salida</td>
+                            <td th:text="${artist.generoMusical}">Genero musical</td>
+                            <td th:text="${artist.nacionalidad}">Nacionalidad</td>
+                            <td>
+                                <form action="#" th:action="@{/listadoArtista/submit}"method="post">
+                                    <input type="hidden" th:value="${artist.dni}" th:name="artistDni"/>
+                                    <input type="text" th:name="artistSalario">
+                                    <button class="btn btn-outline-light px-3 bg-primary" type="submit">Reducir Salario</button>
+                                </form>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <a name="listadoCartel"></a>
+            <div class="card">
+
+                <div class="card-body pb-0">
+                    <h5 class="card-title">Listado Carteles</h5>
+
+                    <table class="table table-dark">
+                        <thead>
+                        <tr>
+                            <th scope="col">id</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Género Musical</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Aplazar Cartel</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="cart : ${carteles}">
+                            <th scope="row" th:text="${cart.id}">ID</th>
+                            <td th:text="${cart.nombre}">Nombre</td>
+                            <td th:text="${cart.generoMusical}">Genero musical</td>
+                            <td th:text="${cart.fecha}">Fecha</td>
+                            <td>
+                                <form action="#" th:action="@{/listadoCartel/submit}"method="post">
+                                    <input type="hidden" th:value="${cart.id}" th:name="cartelId"/>
+                                    <input type="date" th:name="cartFecha">
+                                    <button class="btn btn-outline-light px-3 bg-primary" type="submit">Aplazar Cartel</button>
+                                </form>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+
+        <footer class="col-9 col-lg-9 col-md-9 py-4 flex-shrink-0 bg-light">
+            <div class="container py-4">
+                <div class="row gy-4 gx-5">
+                    <div class="col-lg-4 col-md-4">
+                        <h5 class="h1"><i class="fas fa-exclamation-triangle"></i> WARN</h5>
+                        <p class="small text-muted">Prohibido el acceso a menores de 18 años.</p>
+                        <p class="small text-muted mb-0">&copy; Copyrights. All rights reserved. <a class="text-primary"
+                                href="#">www.quevedofest.com</a></p>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <h5 class="h2 mb-3"><i class="fas fa-users"></i> REDES SOCIALES</h5>
+                        <h2>
+                            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                            &nbsp;&nbsp;
+                            <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                            &nbsp;&nbsp;
+                            <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
+                            &nbsp;&nbsp;
+                            <a href="https://tiktok.com/"><i class="fab fa-tiktok"></i></a>
+                            &nbsp;&nbsp;
+                            <a href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
+                        </h2>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <h3 class=""><i class="fas fa-info-circle"></i> CONTÁCTANOS</h3>
+                        <br>
+                        <p class="small text-muted"><i class="fa fa-phone"></i>&nbsp; 91 499 55 88</p>
+                        <p class="small text-muted"><i class="fas fa-envelope"></i>&nbsp; quevedofestival@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+</body>
+
+    <!-- Vendor JS Files -->
+    <script type="text/javascript" src="../../static/assets/js/main.js" th:src="@{/assets/js/main.js}"></script>
+
+    <script type="text/javascript" src="../../static/js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+
+</html>

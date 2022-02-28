@@ -1,0 +1,16 @@
+version: "3.9"
+
+services:
+  queval-mysql:
+    image: mysql
+    container_name: festivaldb-mysql
+    ports: 
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: festivaldb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: admin
+    volumes:
+      - ./db-data:/var/lib/mysql

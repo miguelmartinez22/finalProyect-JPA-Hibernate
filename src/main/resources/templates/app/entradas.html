@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="../../static/css/entradas.css" th:href="@{/css/entradas.css}">
+
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f33f57c2f7.js" crossorigin="anonymous"></script>
+
+    <title>Entradas</title>
+</head>
+<body>
+    <!-- Vertically centered modal -->
+    <!--
+    <div class="modal-dialog modal-dialog-centered">
+        <a>¡Compra ya tu entrada y disfruta de un 20% de descuento!</a>
+    </div>-->
+    <div class="container-fluid">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="../index.html" th:href="@{/index}"><i class="fas fa-home"></i> QUEVEDO FEST 2022</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="entradas.html" th:href="@{/entradas}"><i class="fab fa-phoenix-framework"></i>&nbsp; ENTRADAS</a>
+                            </li>
+                            &nbsp;&nbsp;
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="carteles.html" th:href="@{/carteles}"><i class="fas fa-music"></i> &nbsp;CARTELES 2022</a>
+                            </li>
+                            &nbsp;&nbsp;
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="quienesSomos.html" th:href="@{/quienesSomos}"><i class="fas fa-user-friends"></i> &nbsp;¿QUIÉNES SOMOS?</a>
+                            </li>
+                        </ul>
+                        <h3><a href="login.html" th:href="@{/login}"><i class="far fa-user"></i></a></h3>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <section id="carousel">
+                <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="../../static/img/car1.jpg" th:src="@{/img/car1.jpg}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../../static/img/car2.jpg" th:src="@{/img/car2.jpg}" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="../../static/img/car3.jpg" th:src="@{/img/car3.jpg}" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </section>
+
+            <div class="row">
+                <div class="col-5 col-lg-5 col-md-5 col-sm-5 entrada">                    
+                    <div class="col-10 col-lg-10 col-md-10 col-sm-10 caja">
+                        <h3>¡COMPRA AHORA TU ENTRADA!</h3>
+                        <br>
+                        <form method="post" enctype="multipart/form-data" action="#"
+                              th:action="@{/entradas/submit}" th:object="${cliente}">
+
+                            <!--USUARIO Y CONTRASEÑA-->
+                            <!-- 2 column grid layout with text inputs for the first and last names -->
+                            <div class="row mb-4">
+                                <div class="col">
+                                  <div class="form-outline">
+                                    <input type="text" id="form6Example9" class="form-control" required th:field="*{usuario}"/>
+                                    <label class="form-label" for="form6Example9">Nombre de usuario</label>
+                                  </div>
+                                    <p>ESTO TE PERMITIRÁ CONSULTAR TU ENTRADA MÁS TARDE DESDE LA PÁGINA [...]</p>
+                                </div>
+                                <div class="col">
+                                  <div class="form-outline">
+                                    <input type="password" id="form6Example10" class="form-control" required th:field="*{contrasena}"/>
+                                    <label class="form-label" for="form6Example10">Contraseña</label>
+                                  </div>
+                                </div>
+                            </div>                                                        
+
+                            <!-- Text input -->
+                            <div class="form-outline mb-4">
+                                <input type="text" id="form6Example0" class="form-control" required th:field="*{dni}"/>
+                                <label class="form-label" for="form6Example0">DNI</label>
+                            </div>
+
+                            <!-- Text input -->
+                            <div class="form-outline mb-4">
+                                <input type="text" id="form6Example1" class="form-control" required th:field="*{nombre}"/>
+                                <label class="form-label" for="form6Example1">Nombre</label>
+                            </div>                              
+
+                            <!-- 2 column grid layout with text inputs for the first and last names -->
+                            <div class="row mb-4">
+                              <div class="col">
+                                <div class="form-outline">
+                                  <input type="text" id="form6Example2" class="form-control" required th:field="*{apellido1}"/>
+                                  <label class="form-label" for="form6Example2">Primer apellido</label>
+                                </div>
+                              </div>
+                              <div class="col">
+                                <div class="form-outline">
+                                  <input type="text" id="form6Example3" class="form-control" th:field="*{apellido2}"/>
+                                  <label class="form-label" for="form6Example3">Segundo apellido</label>
+                                </div>
+                              </div>
+                            </div>
+                          
+                            <!-- Text input -->
+                            <div class="form-outline mb-4">
+                              <input type="text" id="form6Example4" class="form-control" required th:field="*{telefono}"/>
+                              <label class="form-label" for="form6Example4">Teléfono</label>
+                            </div>
+                          
+                            <!-- Text input -->
+                            <div class="form-outline mb-4">
+                              <label class="form-label" for="provincia"></label>
+
+                              <select required name="provincia" id="provincia" class="form-control" th:field="*{localidad}">
+                                <option value="">Elige Provincia</option>
+                                <option value="Álava/Araba">Álava/Araba</option>
+                                <option value="Albacete">Albacete</option>
+                                <option value="Alicante">Alicante</option>
+                                <option value="Almería">Almería</option>
+                                <option value="Asturias">Asturias</option>
+                                <option value="Ávila">Ávila</option>
+                                <option value="Badajoz">Badajoz</option>
+                                <option value="Baleares">Baleares</option>
+                                <option value="Barcelona">Barcelona</option>
+                                <option value="Burgos">Burgos</option>
+                                <option value="Cáceres">Cáceres</option>
+                                <option value="Cádiz">Cádiz</option>
+                                <option value="Cantabria">Cantabria</option>
+                                <option value="Castellón">Castellón</option>
+                                <option value="Ceuta">Ceuta</option>
+                                <option value="Ciudad Real">Ciudad Real</option>
+                                <option value="Córdoba">Córdoba</option>
+                                <option value="Cuenca">Cuenca</option>
+                                <option value="Gerona/Girona">Gerona/Girona</option>
+                                <option value="Granada">Granada</option>
+                                <option value="Guadalajara">Guadalajara</option>
+                                <option value="Guipúzcoa/Gipuzkoa">Guipúzcoa/Gipuzkoa</option>
+                                <option value="Huelva">Huelva</option>
+                                <option value="Huesca">Huesca</option>
+                                <option value="Jaén">Jaén</option>
+                                <option value="La Coruña/A Coruña">La Coruña/A Coruña</option>
+                                <option value="La Rioja">La Rioja</option>
+                                <option value="Las Palmas">Las Palmas</option>
+                                <option value="León">León</option>
+                                <option value="Lérida/Lleida">Lérida/Lleida</option>
+                                <option value="Lugo">Lugo</option>
+                                <option value="Madrid">Madrid</option>
+                                <option value="Málaga">Málaga</option>
+                                <option value="Melilla">Melilla</option>
+                                <option value="Murcia">Murcia</option>
+                                <option value="Navarra">Navarra</option>
+                                <option value="Orense/Ourense">Orense/Ourense</option>
+                                <option value="Palencia">Palencia</option>
+                                <option value="Pontevedra">Pontevedra</option>
+                                <option value="Salamanca">Salamanca</option>
+                                <option value="Segovia">Segovia</option>
+                                <option value="Sevilla">Sevilla</option>
+                                <option value="Soria">Soria</option>
+                                <option value="Tarragona">Tarragona</option>
+                                <option value="Tenerife">Tenerife</option>
+                                <option value="Teruel">Teruel</option>
+                                <option value="Toledo">Toledo</option>
+                                <option value="Valencia">Valencia</option>
+                                <option value="Valladolid">Valladolid</option>
+                                <option value="Vizcaya/Bizkaia">Vizcaya/Bizkaia</option>
+                                <option value="Zamora">Zamora</option>
+                                <option value="Zaragoza">Zaragoza</option>
+                              </select>
+                            </div>
+
+                            <!-- Text input -->
+                            <div class="form-outline mb-4">
+                                <select required name="precio" id="precio" class="form-control" th:field="*{precio}">
+                                    <option value="60">Entrada normal (60€)</option>
+                                    <option value="80">Entrada VIP (80€)</option>
+                                    <option value="150">Entrada GOLD (150€)</option>
+                                </select>
+                                <label class="form-label" for="precio">Tipo de Entrada</label>
+                            </div>
+
+                            <br>
+                          
+                            <!-- Date input -->
+                            <!--<div class="form-outline mb-4">
+                              <input type="date" id="form6Example5" class="form-control" required th:field="*{cliente.fechaNacimiento}"/>
+                              <label class="form-label" for="form6Example5">Fecha de nacimiento</label>
+                            </div>-->
+                          
+                            <!-- Message input -->
+                            <div class="form-outline mb-4">
+                              <label class="form-label" for="información">Información adicional: </label>
+                              <p id="información">
+                                  Al comprar una entrada se creará una cuenta de forma automática con los datos obtenidos del formulario
+                              </p>
+                            </div>
+                          
+                            <br>
+                          
+                            <!-- Submit button -->
+                            <button type="submit" class="btn btn-primary btn-block mb-4">¡Comprar!</button>
+                          </form>
+                    </div>
+                </div>
+                <div class="col-5 col-lg-5 col-md-5 col-sm-5 calendario">
+                    <div class="caja">
+                        <h3>¿YA TIENES ENTRADA?</h3>
+                        <br>
+                        <h4><a href="login.html" th:href="@{/login}">Consulta tus datos aquí.</a></h4>
+                        <div id='wrap'>
+                            <div id='calendar'></div>
+                            <div style='clear:both'></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="w-100 py-4 flex-shrink-0 bg-dark">
+            <div class="container py-4">
+                <div class="row gy-4 gx-5">
+                    <div class="col-lg-4 col-md-4">
+                        <h5 class="h1 text-white"><i class="fas fa-exclamation-triangle"></i> WARN</h5>
+                        <p class="small text-muted">Prohibido el acceso a menores de 18 años.</p>
+                        <p class="small text-muted mb-0">&copy; Copyrights. All rights reserved. <a class="text-primary" href="#">www.quevedofest.com</a></p>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <h5 class="h2 text-white mb-3"><i class="fas fa-users"></i> REDES SOCIALES</h5>
+                        <h2>
+                            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                            &nbsp;&nbsp;
+                            <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                            &nbsp;&nbsp;
+                            <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
+                            &nbsp;&nbsp;
+                            <a href="https://tiktok.com/"><i class="fab fa-tiktok"></i></a>
+                            &nbsp;&nbsp;
+                            <a href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
+                        </h2>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <h3 class="text-white"><i class="fas fa-info-circle"></i> CONTÁCTANOS</h3>
+                        <br>
+                        <p class="small text-muted"><i class="fa fa-phone"></i>&nbsp; 91 499 55 88</p>
+                        <p class="small text-muted"><i class="fas fa-envelope"></i>&nbsp; quevedofestival@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+
+    <script type="text/javascript" src="../../static/js/bootstrap.bundle.min.js" th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+
+</html>

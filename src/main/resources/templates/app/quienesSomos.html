@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../static/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="../../static/css/quienesSomos.css" th:href="@{/css/quienesSomos.css}">
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/f33f57c2f7.js" crossorigin="anonymous"></script>
+    <title>¿Quiénes somos?</title>
+</head>
+<body>
+    <div class="container-fluid">
+        <header>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="../index.html" th:href="@{/index}"><i class="fas fa-home"></i> QUEVEDO FEST 2022</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="entradas.html" th:href="@{/entradas}"><i class="fab fa-phoenix-framework"></i>&nbsp; ENTRADAS</a>
+                            </li>
+                            &nbsp;&nbsp;
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="carteles.html" th:href="@{/carteles}"><i class="fas fa-music"></i> &nbsp;CARTELES 2022</a>
+                            </li>
+                            &nbsp;&nbsp;
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="quienesSomos.html" th:href="@{/quienesSomos}"><i class="fas fa-user-friends"></i> &nbsp;¿QUIÉNES SOMOS?</a>
+                            </li>
+                        </ul>
+                        <h3><a href="login.html" th:href="@{/login}"><i class="far fa-user"></i></a></h3>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <main>
+            <div class="col-12 col-lg-7 col-md-7 col-sm-7 texto">
+                <h2>¿QUIÉNES SOMOS?</h2>
+                <br>
+                <div class="col-12 col-lg-8 col-md-8 col-sm-8 centrar">
+                    <p>
+                        Este proyecto es desarrollado por dos estudiantes de Desarrollo de Aplicaciones Web.
+                        Surge como proyecto de la segunda evaluación del módulo de Desarrollo Web en Entorno Servidor de ambos programadores.
+                    </p>
+                    <p>
+                        Como modelo tomamos el proyecto del módulo de bases de datos de Javier Martinez realizado en el curso anterior.
+                    </p>
+                    <p>
+                        El proyecto se basa en la creación de un sitio web que promociona entradas para un festival.
+                        Dicho proyecto es elaborado, principalmente, en Java. Se emplean, también, otros componentes de diseño y maquetación web: HTML5, CSS3, Bootstrap, Thymeleaf como motor de plantillas y Spring Boot.
+                        También recurrimos a una base de datos MySQL que se encuentra en un servicio Docker.
+                    </p>
+                    <p>
+                        Esta página tiene varias vistas:
+                        <br> 
+                        La primera es la del usuario que no se da de alta,
+                        al que se le permite navegar por la web y comprar una entrada para el festival.
+                        <br>
+                        Existe otra vista que es la del cliente, pues ya se ha dado de alta en el sistema al comprar una entrada y puede ver los datos de la misma.
+                        <br>
+                        La tercera y última vista es la de administrador. 
+                        Se trata de un usuario capaz de gestionar la página añadiendo nuevos artistas y asignarles un nuevo camerino, nuevos carteles, los clubs de fans, etc.
+                    </p>
+                </div>
+            </div>
+        </main>
+        <footer class="w-100 py-4 flex-shrink-0 bg-dark">
+            <div class="container py-4">
+                <div class="row gy-4 gx-5">
+                    <div class="col-lg-4 col-md-4">
+                        <h5 class="h1 text-white"><i class="fas fa-exclamation-triangle"></i> WARN</h5>
+                        <p class="small text-muted">Prohibido el acceso a menores de 18 años.</p>
+                        <p class="small text-muted mb-0">&copy; Copyrights. All rights reserved. <a class="text-primary" href="#">www.quevedofest.com</a></p>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <h5 class="h2 text-white mb-3"><i class="fas fa-users"></i> REDES SOCIALES</h5>
+                        <h2>
+                            <a href="https://twitter.com/"><i class="fab fa-twitter"></i></a>
+                            &nbsp;&nbsp;
+                            <a href="https://instagram.com/"><i class="fab fa-instagram"></i></a>
+                            &nbsp;&nbsp;
+                            <a href="https://facebook.com/"><i class="fab fa-facebook"></i></a>
+                            &nbsp;&nbsp;
+                            <a href="https://tiktok.com/"><i class="fab fa-tiktok"></i></a>
+                            &nbsp;&nbsp;
+                            <a href="https://youtube.com/"><i class="fab fa-youtube"></i></a>
+                        </h2>
+                    </div>
+                    <div class="col-lg-4 col-md-4">
+                        <h3 class="text-white"><i class="fas fa-info-circle"></i> CONTÁCTANOS</h3>
+                        <br>
+                        <p class="small text-muted"><i class="fa fa-phone"></i>&nbsp; 91 499 55 88</p>
+                        <p class="small text-muted"><i class="fas fa-envelope"></i>&nbsp; quevedofestival@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
